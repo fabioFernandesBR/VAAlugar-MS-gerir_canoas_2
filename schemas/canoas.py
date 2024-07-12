@@ -20,11 +20,11 @@ class SchemaCriacaoCanoa(BaseModel):
 
     Método POST
     """
-    nome: str = "E Ala E"
-    tipo: str = "OC2"
-    dono: str = "Fábio"
-    estado: str = "RJ"
-    municipio: str = "Rio de Janeiro"
+    nome: str
+    tipo: str
+    dono: str
+    estado: str
+    municipio: str
     bairro: Optional[str] = None
     referencia: Optional[str] = None
     latitude: Optional[float] = None
@@ -37,7 +37,7 @@ class SchemaExclusaoCanoa(BaseModel):
 
     Método DELETE
     """
-    id_canoa: int = 1
+    id_canoa: int
 
 
 class SchemaAtualizacaoAvaliacao(BaseModel):

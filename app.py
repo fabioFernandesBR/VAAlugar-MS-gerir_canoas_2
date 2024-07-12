@@ -127,18 +127,18 @@ def exclui_canoa(form: SchemaExclusaoCanoa):
 
 @app.patch('/atualizaravaliacao', tags=[atualizacao_avaliacao_canoa_tag],
             responses={"200": SchemaVisualizacaoCanoa, "404": SchemaMensagemErro, "400": SchemaMensagemErro})
-def atualiza_avaliacao_canoa(form: SchemaAtualizacaoAvaliacao):
+def atualiza_avaliacao_canoa(body: SchemaAtualizacaoAvaliacao):
     """Atualiza os valores referentes a avaliações recebidas pela canoa: quantidade de avaliações e média das respostas.
 
     Retorna uma representação atualizada da canoa. 
     """
-    logger.debug(f"Recebido dados para atualização de canoa: {form}")
-    print(f"Recebido dados para atualização de canoa: {form}")
+    logger.debug(f"Recebido dados para atualização de canoa: {body}")
+    print(f"Recebido dados para atualização de canoa: {body}")
     try:
         # criando conexão com a base
         session = Session()
         # buscando a canoa a ser excluída
-        canoa = session.query(Canoa).filter_by(id_canoa=form.id_canoa).first()
+        canoa = session.query(Canoa).filter_by(id_canoa=body.id_canoa).first()
         if canoa is None:
             error_msg = "Canoa não encontrada"
             logger.warning(f"Erro ao excluir canoa, {error_msg}")
@@ -147,8 +147,8 @@ def atualiza_avaliacao_canoa(form: SchemaAtualizacaoAvaliacao):
         logger.debug(f"Canoa encontrada: {canoa}")
 
         # Atualizando os campos relevantes
-        canoa.qtde_avaliacoes = form.qtde_avaliacoes
-        canoa.media_avaliacoes = form.media_avaliacoes
+        canoa.qtde_avaliacoes = body.qtde_avaliacoes
+        canoa.media_avaliacoes = body.media_avaliacoes
 
 
         # Commitando as mudanças no banco de dados
