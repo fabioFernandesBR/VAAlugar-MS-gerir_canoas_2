@@ -1,17 +1,24 @@
-# Define a imagem base
-FROM python:3.12.4
+# Use a imagem oficial do Python 3.12.4 como base
+FROM python:3.12.4-slim
 
-# Define o diretório de trabalho dentro do container
+# Defina o diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copia os arquivos de requisitos para o diretório de trabalho
+# Copie os arquivos requirements.txt para o diretório de trabalho
 COPY requirements.txt .
 
-# Instala as dependências do projeto
+# Instale as dependências do Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia o código-fonte para o diretório de trabalho
+# Copie o restante dos arquivos da aplicação para o diretório de trabalho
 COPY . .
 
-# Define o comando de execução da API
-CMD ["flask", "run", "--host", "0.0.0.0", "--port=5002"]
+# Defina a variável de ambiente para desativar buffers
+ENV PYTHONUNBUFFERED=1
+
+# Exponha a porta que a aplicação vai rodar
+EXPOSE 5000
+
+# Comando para rodar a aplicação
+CMD ["python", "app.py"]
+
