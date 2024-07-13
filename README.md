@@ -1,6 +1,6 @@
 # VAAlugar-MS-canoas-2
 
-Repositório do projeto VA'Alugar em Microsserviços (MS).Para mais informações sobre este projeto, consultar o readme do repositório Gateway: https://github.com/fabioFernandesBR/VAAlugar-MS-gateway/blob/main/README.md.
+Repositório do projeto VA'Alugar em Microsserviços (MS) para a gestão das canoas. Para mais informações sobre este projeto, consultar o readme do repositório Gateway: https://github.com/fabioFernandesBR/VAAlugar-MS-gateway/blob/main/README.md.
 
 
 Este MS executa tarefas de gestão das canoas, tais como criar, excluir, atualizar e consultar canoas.
