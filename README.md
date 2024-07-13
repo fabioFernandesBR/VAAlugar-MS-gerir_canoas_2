@@ -1,18 +1,25 @@
 # VAAlugar-MS-canoas-2
 
-Repositório do projeto de Microsserviço (MS) que executa tarefa de gestão das canoas, tais como criar, excluir, atualizar e consultar canoas.
+Repositório do projeto VA'Alugar em Microsserviços (MS).Para mais informações sobre este projeto, consultar o readme do repositório Gateway: https://github.com/fabioFernandesBR/VAAlugar-MS-gateway/blob/main/README.md.
+
+
+
+
+Este MS executa tarefas de gestão das canoas, tais como criar, excluir, atualizar e consultar canoas.
 Em relação à versão anterior:
 - a base de dados agora inclui campos para localização e geolocalização, como estado, município, bairro e referência e latitude e longitude. Também foram incluídos campos referentes às avaliações recebidas, tais como quantidade de avaliações e média das avaliações.
 - a pesquisa pelo GraphQL toma apenas 1 string e faz as busca nas 4 variáveis de localização.
 - foi adicionada uma rota para atualização das informações sobre as avaliações.
 
-ATENÇÃO: Docker configurado para rodar na porta 5002.
+### ATENÇÃO: rodar na porta 5002.
 
-O que este microsserviço faz
-Este MS gerencia as canoas.
 
+
+## Esquema de Fluxo de informações:
 Disponibiliza as seguintes rota para comunicação via REST:
-/criar: usando o método POST. Ao chamar esta rota, informar via JSON conforme definido na seção Parâmetros. O MS vai registrar no banco de dados SQLite (exclusivo deste MS) e retornar a confirmação da criação da canoa ou algum erro.
+
+### /criar: 
+usando o método POST. Ao chamar esta rota, informar via JSON. O MS vai registrar no banco de dados SQLite (exclusivo deste MS) e retornar a confirmação da criação da canoa ou algum erro.
 
 /excluir: usando o método DELETE. Ao chamar esta rota, informar via JSON conforme definido na seção Parâmetros. O MS vai excluir do banco de dados SQLite e retornar a confirmação da exclusão da canoa ou algum erro.
 
@@ -22,14 +29,6 @@ Com a rota /graphql, diferentes parâmetros podem ser passados via GraphQL, para
 - query se chama canoas.
 - 2 critérios de busca são habilitados: local e tipos. Local é string, e pesquisa nos campos relacionados à localização: estado, município, bairro e referência. Basta que 1 desses campos contenha a string pesquisada e a canoa será retornada pela query. Tipos é habilitado como lista, de modo que pode-se pesquisar por mais de um valor, como ["OC1", "OC2"], por exemplo.
 - Os tipos são as características das canoas, como OC2, OC4 e OC6. São strings e devem ser passadas como lista.
-
-
-
-## Parâmetros
-
-
-
-
 
 
 ## Criação do banco de dados: 1 tabela!!
